@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { HashRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Register from './pages/register/register';
 import Login from './pages/login/login';
 import Home from './pages/home/home';
@@ -9,13 +9,13 @@ import './index.less';
 
 ReactDOM.render(
   <React.StrictMode>
-    <HashRouter>
+    <BrowserRouter>
       <Switch>
         <Route path="/register" component={Register} />
         <Route path="/login" component={Login} />
         <Route component={Home}></Route>
       </Switch>
-    </HashRouter>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
