@@ -1,9 +1,10 @@
 import React from 'react';
+import './login.less';
 
 const Login = () => {
     return (
-        <div>
-            Login
+        <div className="pages-of-login">
+            
         </div>
     );
 }
