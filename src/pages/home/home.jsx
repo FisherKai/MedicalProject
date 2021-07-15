@@ -2,13 +2,11 @@
  * 首页
  */
 import React, { useEffect } from 'react';
-import { getAllUser } from '../../api/api';
 
 export default function Home() {
+    // eslint-disable-next-line
     useEffect(async () => {
         console.log(2312321);
-        let res = await getAllUser();
-        console.log(res);
     })
 
     return (

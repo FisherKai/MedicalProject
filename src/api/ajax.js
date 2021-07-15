@@ -20,6 +20,8 @@ axios.interceptors.response.use(
                     // 返回 401 清除token信息并跳转到登录页面
                     window.location.replace('/login')
                     break;
+                default:
+                    break;
             }
         }
         return Promise.reject(error.response && error.response.data)   // 返回接口返回的错误信息

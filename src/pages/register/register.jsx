@@ -1,7 +1,7 @@
 /**
  * 个人中心
  */
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Button, Toast } from 'antd-mobile';
 import Img from '../../assets/images/background-1.png';
 import { register } from '../../api/api';
@@ -20,13 +20,13 @@ const Register = () => {
             Toast.fail('用户名不得小于6位', 1);
         } else if (password.length < 6) {
             Toast.fail('密码不得小于6位', 1);
-        } else if (password != confirmPassword) {
+        } else if (password !== confirmPassword) {
             Toast.fail('密码与确认密码不一致', 1);
         }
         let res = await register(username, password);
         if (res.data.token) {
             localStorage.setItem('token', res.data.token);
-            window.location.replace('/');
+            window.location.replace('/home');
         } else {
             Toast.fail(res.msg, 1);
         }
@@ -34,7 +34,7 @@ const Register = () => {
 
     return (
         <div className="pages-of-register">
-            <img src={Img} className="register-u-logo" />
+            <img src={Img} className="register-u-logo" alt="logo"/>
             <div className="register-m-container">
                 <input type="text" placeholder="请输入用户名" onChange={(e) => { setUsername(e.target.value) }} />
                 <input type="password" placeholder="请输入密码" onChange={(e) => { setPassword(e.target.value) }} />
