@@ -1,3 +1,6 @@
+/**
+ * 登录页
+ */
 import React, { useState, useEffect } from 'react';
 import { Button, Toast } from 'antd-mobile';
 import Img from '../../assets/images/background-1.png';

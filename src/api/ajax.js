@@ -22,7 +22,7 @@ axios.interceptors.response.use(
                     break;
             }
         }
-        return Promise.reject(error.response.data)   // 返回接口返回的错误信息
+        return Promise.reject(error.response && error.response.data)   // 返回接口返回的错误信息
     })
 
 export default async function ajax(url, data = {}, type = 'GET') {

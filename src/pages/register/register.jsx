@@ -1,3 +1,6 @@
+/**
+ * 个人中心
+ */
 import React, { useEffect, useState } from 'react';
 import { Button, Toast } from 'antd-mobile';
 import Img from '../../assets/images/background-1.png';

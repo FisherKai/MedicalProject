@@ -1,3 +1,6 @@
+/**
+ * 首页
+ */
 import React, { useEffect } from 'react';
 import { getAllUser } from '../../api/api';
 

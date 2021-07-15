@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Register from './pages/register/register';
 import Login from './pages/login/login';
-import Home from './pages/home/home';
+import Main from './pages/main/main';
 import './index.less';
 // import reportWebVitals from './reportWebVitals';
 
@@ -13,7 +13,7 @@ ReactDOM.render(
       <Switch>
         <Route path="/register" component={Register} />
         <Route path="/login" component={Login} />
-        <Route component={Home}></Route>
+        <Route component={Main}></Route>
       </Switch>
     </BrowserRouter>
   </React.StrictMode>,
