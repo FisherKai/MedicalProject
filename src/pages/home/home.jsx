@@ -2,12 +2,33 @@
  * 首页
  */
 import React, { useEffect } from 'react';
-import { SearchBar, Carousel, WhiteSpace, Grid } from 'antd-mobile';
+import { SearchBar, Carousel, WhiteSpace, Grid, WingBlank } from 'antd-mobile';
 
 import './home.less';
 
 // 获取轮播组件需要的图片资源
 const carouselList = ['Carousel1', 'Carousel2', 'Carousel3'];
+
+// 类目资源定义
+const gridList = [{
+    icon: require(`../../assets/icon/merchandise.png`),
+    text: '类目1'
+}, {
+    icon: require(`../../assets/icon/merchandise.png`),
+    text: '类目2'
+}, {
+    icon: require(`../../assets/icon/merchandise.png`),
+    text: '类目3'
+}, {
+    icon: require(`../../assets/icon/merchandise.png`),
+    text: '类目4'
+}, {
+    icon: require(`../../assets/icon/merchandise.png`),
+    text: '类目5'
+}, {
+    icon: require(`../../assets/icon/merchandise.png`),
+    text: '类目6'
+}]
 
 
 export default function Home() {
@@ -26,7 +47,7 @@ export default function Home() {
             <SearchBar placeholder="搜索需要的商品"></SearchBar>
             <WhiteSpace size="sm"></WhiteSpace >
             {/* 轮播图 */}
-            <div className="home-of-carousel">
+            <WingBlank size="sm">
                 <Carousel
                     autoplay
                     infinite
@@ -43,12 +64,39 @@ export default function Home() {
                         />
                     ))}
                 </Carousel>
-            </div>
+            </WingBlank>
+
+            <WhiteSpace size="sm"></WhiteSpace>
 
             {/* 类目 */}
-            <div>
-                <Grid data={[]} isCarousel onClick={_el => console.log(_el)} />
-            </div>
+            <WingBlank size="sm">
+                <Grid data={gridList}
+                    isCarousel
+                    hasLine
+                    onClick={_el => console.log(_el)}
+                />
+            </WingBlank>
+
+            <WhiteSpace size="sm"></WhiteSpace>
+
+            <WingBlank size="sm" className="home-of-recommend">
+                <Carousel className="my-carousel"
+                    vertical
+                    dots={false}
+                    dragging={false}
+                    swiping={false}
+                    autoplay
+                    infinite
+                    speed={200}
+                    autoplayInterval={1000}
+                    resetAutoplay={false}
+                >
+                    {['ring', 'ruby', 'iPhone', 'iPod', 'sorry', 'tourism', 'coke', 'ticket', 'note'].map(type => (
+                        <div className="v-item" key={type}>{type}</div>
+                    ))}
+                </Carousel>
+                <div>新品推荐</div>
+            </WingBlank>
         </div>
     )
 }
