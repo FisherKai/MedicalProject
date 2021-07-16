@@ -31,7 +31,7 @@ const Login = () => {
     },[])
 
     return (
-        <div className="pages-of-login">
+        <div className="page-of-login">
             <img src={Img} className="login-u-logo" alt="logo"/>
             <div className="login-m-container">
                 <input type="text" placeholder="请输入用户名" onChange={(e) => { setUsername(e.target.value) }} />

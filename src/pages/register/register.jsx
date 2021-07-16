@@ -33,7 +33,7 @@ const Register = () => {
     }
 
     return (
-        <div className="pages-of-register">
+        <div className="page-of-register">
             <img src={Img} className="register-u-logo" alt="logo"/>
             <div className="register-m-container">
                 <input type="text" placeholder="请输入用户名" onChange={(e) => { setUsername(e.target.value) }} />
