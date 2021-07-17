@@ -54,6 +54,7 @@ export default function Home() {
                 >
                     {carouselList.map((val, index) => (
                         <img
+                            key={index}
                             src={require(`../../assets/images/${val}.png`)}
                             alt=""
                             style={{ width: '100%', verticalAlign: 'top' }}
