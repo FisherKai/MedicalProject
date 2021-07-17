@@ -8,15 +8,13 @@ import './index.less';
 // import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <Switch>
-        <Route path="/register" component={Register} />
-        <Route path="/login" component={Login} />
-        <Route component={Main}></Route>
-      </Switch>
-    </BrowserRouter>
-  </React.StrictMode>,
+  <BrowserRouter>
+    <Switch>
+      <Route path="/register" component={Register} />
+      <Route path="/login" component={Login} />
+      <Route component={Main}></Route>
+    </Switch>
+  </BrowserRouter>,
   document.getElementById('root')
 );
 
