@@ -30,6 +30,12 @@ const gridList = [{
     text: '类目6'
 }]
 
+// 商品资源定义
+const data = Array.from(new Array(9)).map((_val, i) => ({
+    icon: 'https://gw.alipayobjects.com/zos/rmsportal/nywPmnTAvTmLusPxHPSu.png',
+    text: `name${i}`,
+}));
+
 
 export default function Home() {
     // eslint-disable-next-line
@@ -81,22 +87,36 @@ export default function Home() {
             <WhiteSpace size="sm"></WhiteSpace>
 
             <WingBlank size="sm" className="home-of-recommend">
-                <Carousel className="my-carousel"
-                    vertical
-                    dots={false}
-                    dragging={false}
-                    swiping={false}
-                    autoplay
-                    infinite
-                    speed={200}
-                    autoplayInterval={1000}
-                    resetAutoplay={false}
-                >
-                    {['ring', 'ruby', 'iPhone', 'iPod', 'sorry', 'tourism', 'coke', 'ticket', 'note'].map(type => (
-                        <div className="v-item" key={type}>{type}</div>
-                    ))}
-                </Carousel>
+                <div>
+                    <span>限时秒杀</span>
+                    <Carousel className="my-carousel"
+                        vertical
+                        dots={false}
+                        dragging={false}
+                        swiping={false}
+                        autoplay
+                        infinite
+                        speed={200}
+                        autoplayInterval={1000}
+                        resetAutoplay={false}
+                    >
+                        {['感冒药', '消炎药', '消食片', '999感冒灵', '聪明药'].map(type => (
+                            <div className="v-item" key={type}>
+                                <img src={require(`../../assets/icon/medical.png`)} alt="medical" />
+                                <span>{type}</span>
+                            </div>
+                        ))}
+                    </Carousel>
+                </div>
+
                 <div>新品推荐</div>
+            </WingBlank>
+
+            <WhiteSpace size="sm"></WhiteSpace>
+
+            {/* 商品区 */}
+            <WingBlank size="sm">
+                <Grid data={data} columnNum={2}/>
             </WingBlank>
         </div>
     )

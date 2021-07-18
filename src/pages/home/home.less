@@ -18,8 +18,17 @@
         border-radius: 20px;
         display      : flex;
 
-        &>div {
-            flex: 1;
+        &>div,
+        .v-item {
+            flex           : 1;
+            display        : flex;
+            justify-content: center;
+            align-items    : center;
+            flex-direction : column;
+
+            &>img {
+                width: 10vw;
+            }
         }
     }
 
