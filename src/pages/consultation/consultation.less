@@ -1,0 +1,60 @@
+.page-of-consultation {
+    width : 100vw;
+    height: 93vh;
+
+    .consultation-of-container {
+        width     : 100vw;
+        height    : 79vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+        background: seashell;
+
+        .server {
+            margin       : 4vw 7vw;
+            font-size    : 25px;
+            background   : cornflowerblue;
+            border-radius: 5px 20px 20px 5px;
+            padding-left : 4vw;
+        }
+
+        .client {
+            margin       : 4vw 7vw;
+            font-size    : 25px;
+            background   : darkseagreen;
+            border-radius: 20px 5px 5px 20px;
+            padding-right : 4vw;
+            text-align: right;
+        }
+
+    }
+
+    .consultation-of-msg {
+        width     : 100vw;
+        height    : 8vh;
+        position  : absolute;
+        bottom    : 0;
+        display   : flex;
+        padding   : 3vw;
+        box-sizing: border-box;
+        background: #fff;
+        border    : 1px solid #bbb;
+        z-index   : 99;
+
+        .msg-of-icon {
+            flex      : 1;
+            text-align: center;
+
+            img {
+                width: 7vw;
+            }
+        }
+
+        .msg-of-btn {
+            flex: 1;
+        }
+
+        .msg-of-input {
+            flex: 4;
+        }
+    }
+}
