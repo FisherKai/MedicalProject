@@ -1,7 +1,7 @@
 /**
  * 登录页
  */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import { Button, Toast } from 'antd-mobile';
 import Img from '../../assets/images/background-1.png';
 import { login } from '../../api/api';
@@ -22,7 +22,7 @@ const Login = () => {
         }
     }
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         // 登录拦截
         let token = localStorage.getItem('token');
         if (token) {

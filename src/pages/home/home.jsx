@@ -1,34 +1,14 @@
 /**
  * 首页
  */
-import React, { useEffect } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 import { SearchBar, Carousel, WhiteSpace, Grid, WingBlank } from 'antd-mobile';
+import { queryIconList } from '../../api/api';
 
 import './home.less';
 
 // 获取轮播组件需要的图片资源
 const carouselList = ['Carousel1', 'Carousel2', 'Carousel3'];
-
-// 类目资源定义
-const gridList = [{
-    icon: require(`../../assets/icon/merchandise.png`),
-    text: '类目1'
-}, {
-    icon: require(`../../assets/icon/merchandise.png`),
-    text: '类目2'
-}, {
-    icon: require(`../../assets/icon/merchandise.png`),
-    text: '类目3'
-}, {
-    icon: require(`../../assets/icon/merchandise.png`),
-    text: '类目4'
-}, {
-    icon: require(`../../assets/icon/merchandise.png`),
-    text: '类目5'
-}, {
-    icon: require(`../../assets/icon/merchandise.png`),
-    text: '类目6'
-}]
 
 // 商品资源定义
 const data = Array.from(new Array(9)).map((_val, i) => ({
@@ -38,10 +18,21 @@ const data = Array.from(new Array(9)).map((_val, i) => ({
 
 
 export default function Home() {
+    const [iconList, seticonList] = useState([]);
     // eslint-disable-next-line
-    useEffect(async () => {
-        console.log(2312321);
-    })
+    useLayoutEffect(() => {
+        queryIconList().then(res => {
+            let temp = [];
+            res.data && res.data.forEach(item => {
+                temp.push({
+                    icon: item.icon_path,
+                    text: item.text,
+                    url: item.url
+                })
+            })
+            seticonList(temp)
+        })
+    }, [iconList])
 
     return (
         <div className="page-of-home">
@@ -77,7 +68,7 @@ export default function Home() {
 
             {/* 类目 */}
             <WingBlank size="sm">
-                <Grid data={gridList}
+                <Grid data={iconList}
                     isCarousel
                     hasLine
                     onClick={_el => console.log(_el)}
@@ -116,7 +107,7 @@ export default function Home() {
 
             {/* 商品区 */}
             <WingBlank size="sm">
-                <Grid data={data} columnNum={2}/>
+                <Grid data={data} columnNum={2} />
             </WingBlank>
         </div>
     )
