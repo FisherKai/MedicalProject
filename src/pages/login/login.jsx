@@ -26,13 +26,13 @@ const Login = () => {
         // 登录拦截
         let token = localStorage.getItem('token');
         if (token) {
-            window.location.replace('/home');
+            window.location.replace('/');
         }
-    },[])
+    }, [])
 
     return (
         <div className="page-of-login">
-            <img src={Img} className="login-u-logo" alt="logo"/>
+            <img src={Img} className="login-u-logo" alt="logo" />
             <div className="login-m-container">
                 <input type="text" placeholder="请输入用户名" onChange={(e) => { setUsername(e.target.value) }} />
                 <input type="password" placeholder="请输入密码" onChange={(e) => { setPassword(e.target.value) }} />

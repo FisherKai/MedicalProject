@@ -9,13 +9,17 @@ import './consultation.less';
 // 从缓存中取聊天记录
 let chatData = localStorage.getItem('chatData') || [],
     container;
-console.log(chatData);
 
 setTimeout(() => {
     receiveMsg(function (data) {
-        let node = document.createElement('p');
+        let node = document.createElement('div');
+        let img = document.createElement('img');
+        let p = document.createElement('p');
+        img.src = require('../../assets/icon/user-1.png');
         node.classList.add('server');
-        node.innerText = data.data;
+        p.innerText = data.data;
+        node.appendChild(img);
+        node.appendChild(p);
         container.appendChild(node);
         chatData.push(data);
         container.scrollTop = container.scrollHeight;
@@ -57,7 +61,7 @@ export default function Consultation() {
                 } */}
             </div>
             <div className="consultation-of-msg">
-                <div className="msg-of-icon" onClick={() => {
+                {/* <div className="msg-of-icon" onClick={() => {
                     // 更改为键盘类型的图片
                     if (iconName === 'voice') {
                         setIconName('keyboard');
@@ -66,24 +70,43 @@ export default function Consultation() {
                     }
                 }}>
                     <img src={require(`../../assets/icon/${iconName}.png`)} alt="voice" />
-                </div>
-                {iconName === 'voice' ? <input type="text" name="" id="" className="msg-of-input" onChange={(e) => {
+                </div> */}
+                <input type="text" name="input-msg" id="input-msg" className="msg-of-input" onChange={(e) => {
                     setInputData(e.target.value);
-                }} /> :
-                    <button className="msg-of-input">点击</button>
-                }
+                }} />
                 <button className="msg-of-btn" onClick={() => {
                     if (!inputData) return;
                     sendMsg({ from: 'client', to: 'server', data: inputData });
                     // setChatData([...chat_data, { from: 'client', to: 'server', data: inputData }])
-                    let node = document.createElement('p');
+
+
+                    /**
+                     *  
+                     * let node = document.createElement('div');
+                        let img =document.createElement('img');
+                        let p=document.createElement('p');
+                        img.src=require('../../assets/icon/user-1.png');
+                        node.classList.add('server');
+                        p.innerText = data.data;
+                        node.appendChild(img);
+                        node.appendChild(p);
+                        container.appendChild(node);
+                     */
+
+                    let node = document.createElement('div');
+                    let img = document.createElement('img');
+                    let p = document.createElement('p');
+                    img.src = require('../../assets/icon/user-2.png');
                     node.classList.add('client');
-                    node.innerText = inputData;
+                    p.innerText = inputData;
+                    node.appendChild(p);
+                    node.appendChild(img);
                     container.appendChild(node);
                     container.scrollTop = container.scrollHeight;
                     // 这里置空不起作用   离谱
                     setInputData('');
                     chatData.push({ from: 'client', to: 'server', data: inputData });
+                    document.getElementById("input-msg").value = "";
                 }}>发送</button>
             </div>
         </div>

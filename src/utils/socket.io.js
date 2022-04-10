@@ -8,12 +8,10 @@ import io from 'socket.io-client';
  */
 const user_token = localStorage.getItem('token');
 let IO;
+IO = io(`ws://127.0.0.1:4000?id=${user_token}`);
 if (user_token) {
     // 创建socketio链接
-    IO = io(`ws://127.0.0.1:4000?id=${user_token}`);
     IO.connect();
-} else {
-    window.location.replace('/login');
 }
 
 export default IO;

@@ -3,9 +3,10 @@
  */
 import React, { useEffect, useState } from 'react';
 import { SearchBar, Carousel, WhiteSpace, Grid, WingBlank } from 'antd-mobile';
-import { queryIconList } from '../../api/api';
+import moment from 'moment';
+import { queryIconList, getAllNewList } from '../../api/api';
 
-import './home.less';
+import './index.less';
 
 // 获取轮播组件需要的图片资源
 const carouselList = ['Carousel1', 'Carousel2', 'Carousel3'];
@@ -17,8 +18,9 @@ const data = Array.from(new Array(9)).map((_val, i) => ({
 }));
 
 
-export default function Home() {
+export default function Index() {
     const [iconList, seticonList] = useState([]);
+    const [newList, setnewList] = useState([]);
     // eslint-disable-next-line
     useEffect(() => {
         queryIconList().then(res => {
@@ -32,14 +34,16 @@ export default function Home() {
             })
             seticonList(temp)
         })
+        getAllNewList().then(res => {
+            if (res && res.data) {
+                console.log(res.data);
+                setnewList(res.data);
+            }
+        })
     }, [])
 
     return (
-        <div className="page-of-home">
-            <div className="home-of-location">
-                {/* todo */}
-                获取位置信息
-            </div>
+        <div className="page-of-index">
             {/* 导航栏 */}
             <SearchBar placeholder="搜索需要的商品"></SearchBar>
             <WhiteSpace size="sm"></WhiteSpace >
@@ -69,46 +73,43 @@ export default function Home() {
             {/* 类目 */}
             <WingBlank size="sm">
                 <Grid data={iconList}
-                    isCarousel
-                    hasLine
-                    onClick={_el => console.log(_el)}
+                    onClick={_el => window.location.href = _el.url}
                 />
             </WingBlank>
 
             <WhiteSpace size="sm"></WhiteSpace>
 
-            <WingBlank size="sm" className="home-of-recommend">
+            <WingBlank size="sm" className="index-of-recommend">
                 <div>
-                    <span>限时秒杀</span>
+                    <span className="u-tips">医药小提示:</span>
                     <Carousel className="my-carousel"
                         vertical
                         dots={false}
                         dragging={false}
-                        swiping={false}
+                        swiping={true}
                         autoplay
                         infinite
                         speed={200}
                         autoplayInterval={1000}
                         resetAutoplay={false}
                     >
-                        {['感冒药', '消炎药', '消食片', '999感冒灵', '聪明药'].map(type => (
-                            <div className="v-item" key={type}>
-                                <img src={require(`../../assets/icon/medical.png`)} alt="medical" />
-                                <span>{type}</span>
+                        {newList.map((item, index) => (
+                            <div className="v-item" key={item.id}>
+                                <div className="title">{item.title}</div>
+                                <div className="summary">{item.summary}</div>
+                                <div className="createtime">{moment(item.createtime).format('yyyy-MM-DD HH:mm:ss')}</div>
                             </div>
                         ))}
                     </Carousel>
                 </div>
-
-                <div>新品推荐</div>
             </WingBlank>
 
             <WhiteSpace size="sm"></WhiteSpace>
 
             {/* 商品区 */}
-            <WingBlank size="sm">
+            {/* <WingBlank size="sm">
                 <Grid data={data} columnNum={2} />
-            </WingBlank>
+            </WingBlank> */}
         </div>
     )
 }

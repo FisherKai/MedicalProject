@@ -8,22 +8,48 @@
         overflow-x: hidden;
         overflow-y: auto;
         background: seashell;
+        font-size : 14px;
 
         .server {
-            margin       : 4vw 7vw;
-            font-size    : 25px;
-            background   : cornflowerblue;
-            border-radius: 5px 20px 20px 5px;
-            padding-left : 4vw;
+            // position   : absolute;
+            // top        : 16%;
+            align-items: center;
+            display    : flex;
+            max-width  : 90%;
+
+
+            p {
+                padding      : 10px;
+                background   : cornflowerblue;
+                border-radius: 10px;
+            }
+
+            img {
+                width : 30px;
+                height: 30px;
+            }
         }
 
         .client {
-            margin       : 4vw 7vw;
-            font-size    : 25px;
-            background   : darkseagreen;
-            border-radius: 20px 5px 5px 20px;
-            padding-right : 4vw;
-            text-align: right;
+
+            // position   : absolute;
+            // right      : 3%;
+            // top        : 9%;
+            align-items: center;
+            display    : flex;
+            justify-content: flex-end;
+
+            p {
+                padding      : 10px;
+                background   : darkseagreen;
+                border-radius: 10px;
+            }
+
+            img {
+                width : 30px;
+                height: 30px;
+                margin: 0 5px;
+            }
         }
 
     }

@@ -1,0 +1,65 @@
+.page-of-index {
+    .index-of-location {
+        width      : 100%;
+        height     : 5vh;
+        display    : flex;
+        align-items: center;
+        padding    : 0 2vw;
+
+    }
+
+    .index-of-carousel {
+        padding: 0 2vw;
+    }
+
+    .index-of-recommend {
+        height       : 15vh;
+        background   : #fff;
+        border-radius: 20px;
+        display      : flex;
+        padding      : 0 12px;
+
+
+        .u-tips {
+            text-align: left;
+            width     : 100%;
+        }
+
+        &>div,
+        .v-item {
+            flex           : 1;
+            display        : flex;
+            justify-content: center;
+            align-items    : center;
+            flex-direction : column;
+
+            &>img {
+                width: 10vw;
+            }
+
+            .title {
+                font-size  : 16px;
+                font-weight: bold;
+            }
+
+            .summary {
+                font-size         : 12px;
+                overflow          : hidden;
+                display           : -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+            }
+
+            .createtime {
+                width     : 100%;
+                text-align: right;
+            }
+        }
+    }
+
+
+    // 覆盖antdm组件样式
+    .am-search {
+        background: unset;
+    }
+}

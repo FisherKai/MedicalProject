@@ -7,7 +7,7 @@ import './profile.less';
 
 export default function Profile() {
     const logout = () => {
-        localStorage.setItem('token', '');
+        localStorage.removeItem('token');
         window.location.replace('/login');
     }
 
@@ -17,9 +17,9 @@ export default function Profile() {
             <div className="header">
                 <img src={require(`../../assets/images/logo.jpg`)}></img>
                 <span>18375183097</span>
-                <button>药师指导</button>
+                {/* <button>药师指导</button> */}
             </div>
-            <div className="orders">
+            {/* <div className="orders">
                 <p>我的订单</p>
                 <div className="container">
                     <div className="item">
@@ -39,7 +39,7 @@ export default function Profile() {
                         <span>待评价</span>
                     </div>
                 </div>
-            </div>
+            </div> */}
 
             {/* 退出按钮 */}
             <Button className="u-logout" type="warning" onClick={logout}>退出登录</Button>

@@ -6,8 +6,9 @@ import { Switch, Route } from 'react-router-dom';
 
 import Cart from '../cart/cart';
 import Consultation from '../consultation/consultation';
-import Home from '../home/home';
+import Index from '../index/index';
 import Profile from '../profile/profile';
+import Search from '../search/search';
 
 import Navfooter from '../../components/nav-footer/nav-footer';
 
@@ -17,9 +18,30 @@ import './main.less';
 
 
 // 导航组件需要的信息
+// const navList = [{
+//     path: '/home',
+//     component: Home,
+//     icon: 'medical',
+//     text: '首页'
+// }, {
+//     path: '/consultation',
+//     component: Consultation,
+//     icon: 'platform',
+//     text: '医疗咨询'
+// }, {
+//     path: '/search',
+//     component: Search,
+//     icon: 'cart',
+//     text: '医疗检索'
+// }, {
+//     path: '/profile',
+//     component: Profile,
+//     icon: 'user',
+//     text: '用户'
+// }];
 const navList = [{
-    path: '/home',
-    component: Home,
+    path: '/index',
+    component: Index,
     icon: 'medical',
     text: '首页'
 }, {
@@ -28,10 +50,10 @@ const navList = [{
     icon: 'platform',
     text: '医疗咨询'
 }, {
-    path: '/cart',
-    component: Cart,
+    path: '/search',
+    component: Search,
     icon: 'cart',
-    text: '购物车'
+    text: '医疗检索'
 }, {
     path: '/profile',
     component: Profile,
@@ -47,17 +69,18 @@ export default function Main() {
             window.location.replace('/login');
         }
         if (window.location.pathname === '/') {
-            window.location.replace('/home');
+            window.location.replace('/index');
         }
     }, [])
     return (
         <div className="page-of-main">
             <div className="main-m-container">
                 <Switch>
-                    <Route path="/home" component={Home} />
+                    <Route path="/index" component={Index} />
                     <Route path="/profile" component={Profile} />
-                    <Route path="/cart" component={Cart} />
+                    {/* <Route path="/cart" component={Cart} /> */}
                     <Route path="/consultation" component={Consultation} />
+                    <Route path="/search" component={Search} />
                 </Switch>
             </div>
             {/* <Logo type={'small'}></Logo> */}
