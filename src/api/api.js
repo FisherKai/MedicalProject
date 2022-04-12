@@ -17,3 +17,4 @@ export const register = async (username, password) => ajax('/user/register', { u
 export const getAllUser = async () => ajax('/index/getUser', {}, 'GET');
 export const queryIconList = async () => ajax('/category/getIconList', {}, 'GET');
 export const getAllNewList = async () => ajax('/newlist/getAllNewList', {});
+// export const getAnswer = async (question) => getQuestionAnswer(question);

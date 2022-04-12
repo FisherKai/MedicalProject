@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const baseUrl = 'http://localhost:4000/medical-project/api';
+const questionUrl = "http://192.168.0.103:8868";
 
 axios.interceptors.request.use(config => {
     const token = localStorage.getItem('token');
@@ -46,4 +47,9 @@ export default async function ajax(url, data = {}, type = 'GET') {
         // 使用axios发post请求
         return await (await axios.post(url, data)).data
     }
+}
+
+export async function getQuestionAnswer(question) {
+    const url = `${questionUrl}/getInfo?question=${question}`
+    return await (await axios.get(url)).data
 }
