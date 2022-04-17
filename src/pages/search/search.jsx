@@ -3,34 +3,34 @@
  */
 import { NavBar, InputItem, SearchBar, Card, WhiteSpace } from 'antd-mobile';
 import React, { useState } from 'react';
-import { sendMsg, receiveMsg } from '../../api/api';
 import './search.less';
 
 
 export default function Consultation() {
-    let [value, setValue] = useState();
+    let [value, setValue] = useState('');
 
     // useEffect(() => {
     //     receiveMsg(function (data) {
     //         setChatData([...chat_data, data])
     //     });
     // })
+    const onChange = (value) => {
+        setValue(value);
+    };
 
     return (
         <div className="page-of-consultation">
             <NavBar>知识检索</NavBar>
             <div className="consultation-of-container">
                 <div className="item-header">
-                    {/* <div style={{ width: '300px' }}>
-                        <InputItem
-                            placeholder='请输入内容'
-                            value={value}
-                            onChange={val => {
-                                setValue(val)
-                            }}
-                        />
-                    </div> */}
-                    <SearchBar placeholder="请输入想要检索的知识" />
+                    <SearchBar
+                        value={value}
+                        placeholder="请输入想要检索的知识"
+                        onSubmit={value => console.log(value, 'onSubmit')}
+                        onClear={value => console.log(value, 'onClear')}
+                        onCancel={() => setValue('')}
+                        showCancelButton
+                        onChange={onChange} />
                 </div>
                 <div>
                     <WhiteSpace size="lg" />
@@ -40,9 +40,7 @@ export default function Consultation() {
                             thumb={require(`../../assets/icon/customer-service.png`)}
                         />
                         <Card.Body>
-                            <div>
-                                <img src={require(`../../assets/images/search-result-1.png`)} />
-                            </div>
+                            <div></div>
                         </Card.Body>
                     </Card>
                 </div>
